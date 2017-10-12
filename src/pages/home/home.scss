@@ -1,3 +1,43 @@
 page-home {
+  .card-head {
+    width: 50vw;
+    height: 50vw;
+    margin: 2rem auto;
+  }
 
+  .card-head img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .card-head .noimage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1.6px;
+    color: #333;
+    font-size: 2rem;
+  }
+
+  .loading{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sync-icon{
+    color: #488aff;
+    font-size: 100px;
+    animation: anim1 1.6s linear infinite;
+  }
+
+  @keyframes anim1 {
+    0% { transform: rotate(360deg); }
+    50% { transform: rotate(180deg); }
+    100% { transform: rotate(0deg); }
+  }
 }

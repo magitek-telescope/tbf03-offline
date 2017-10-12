@@ -3,16 +3,45 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>全サークル一覧</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <div *ngIf="!circles.length" class="loading">
+    <ion-icon class="sync-icon" name="sync"></ion-icon>
+  </div>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+  <ion-card *ngFor="let circle of visibleCircles">
+    <div class="card-head">
+      <img src={{circle.circleCutImage.url}} *ngIf="circle.circleCutImage.url" />
+      <div *ngIf="!circle.circleCutImage.url" class="noimage">
+        noimage
+      </div>
+    </div>
+    <ion-card-content>
+      <ion-card-title>
+        {{circle.name}}:<br>
+      </ion-card-title>
+      <p style="text-align: center">
+        {{circle.spaces.join(', ')}}
+      </p>
+      <p>
+        {{circle.genreFreeFormat || '説明文なし'}}
+      </p>
+      <p style="text-align: right">
+        {{circle.penName}}
+      </p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="star"></ion-icon>
+          <div>ブックマーク</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>
