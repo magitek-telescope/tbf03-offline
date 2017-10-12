@@ -4,22 +4,7 @@ import { NavController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-interface Circle {
-  id: string
-  genre: string
-  name: string
-  penName: string
-  nameRuby: string
-  nextCircleExhibitInfoID: string
-  prevCircleExhibitInfoID: string
-  genreFreeFormat?: string
-  createdAt: string
-  updatedAt: string
-  webSiteURL: string
-  event?: any
-  circleCutImage?: any
-  spaces: string[]
-}
+import { Circle } from '../../models/circle';
 
 @Injectable()
 @Component({
@@ -49,7 +34,7 @@ export class HomePage {
         console.log(this.visibleCircles)
       });
     } else {
-      this.circles = JSON.parse(localStorage.getItem('circles')) as Circle[];
+      this.circles = JSON.parse(localStorage.getItem('circles'), '[]') as Circle[];
       this.visibleCircles = this.circles;
     }
   }
@@ -65,6 +50,13 @@ export class HomePage {
         circle.spaces.join(', ').indexOf(target)+1
       );
     })
+  }
+
+  onClickBookmark (id: string) {
+    const bookmarks = JSON.parse(localStorage.getItem('bookmarks', '[]')) || [];
+    console.log(bookmarks)
+    bookmarks.push(id);
+    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
   }
 
 }

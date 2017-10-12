@@ -3,21 +3,38 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>ブックマーク一覧</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
+<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+<ion-content padding>
+  <div *ngIf="!circles.length" class="loading">
+    ブックマークがありません
   </div>
+
+  <ion-card *ngFor="let circle of visibleCircles">
+    <div class="card-head">
+      <img src={{circle.circleCutImage.url}} *ngIf="circle.circleCutImage.url" />
+      <div *ngIf="!circle.circleCutImage.url" class="noimage">
+        noimage
+      </div>
+    </div>
+    <ion-card-content>
+      <ion-card-title>
+        {{circle.name}}:<br>
+      </ion-card-title>
+      <p style="text-align: center">
+        {{circle.spaces.join(', ')}}
+      </p>
+      <p>
+        {{circle.genreFreeFormat || '説明文なし'}}
+      </p>
+      <p style="text-align: right">
+        {{circle.penName}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
