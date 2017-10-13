@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { Circle } from '../../models/circle';
+import { getBookmark } from '../../models/bookmarks';
+import { getLocalCircles } from '../../models/circle';
 
 @Component({
   selector: 'page-list',
@@ -11,13 +13,12 @@ export class ListPage {
 
   public circles: Circle[] = [];
   public visibleCircles: Circle[] = [];
-  private baseURL: string = 'https://us-central1-tbf03-offline.cloudfunctions.net/scraper'
 
   constructor(
     public navCtrl: NavController
   ) {
-    let circles: Circle[] = JSON.parse(localStorage.getItem('circles', '[]')) as Circle[] || [];
-    const bookmarks = (JSON.parse(localStorage.getItem('bookmarks', '[]')) as string[]) || [];
+    let circles: Circle[] = getLocalCircles();
+    const bookmarks = getBookmark()
 
     circles = circles.filter((circle: Circle) => {
       return (bookmarks.indexOf(circle.id)+1)

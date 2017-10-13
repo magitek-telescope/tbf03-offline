@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Circle } from '../../models/circle';
+import { getBookmark, addBookmark, removeBookmark } from '../../models/bookmarks';
+import { getLocalCircles } from '../../models/circle';
 
 @Injectable()
 @Component({
@@ -34,7 +36,7 @@ export class HomePage {
         console.log(this.visibleCircles)
       });
     } else {
-      this.circles = JSON.parse(localStorage.getItem('circles'), '[]') as Circle[];
+      this.circles = getLocalCircles();
       this.visibleCircles = this.circles;
     }
   }
@@ -53,10 +55,11 @@ export class HomePage {
   }
 
   onClickBookmark (id: string) {
-    const bookmarks = JSON.parse(localStorage.getItem('bookmarks', '[]')) || [];
-    console.log(bookmarks)
-    bookmarks.push(id);
-    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+    if (getBookmark().find((bid: string) => bid == id)) {
+      removeBookmark(id)
+    } else {
+      addBookmark(id)
+    }
   }
 
 }
