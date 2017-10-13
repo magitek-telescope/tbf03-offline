@@ -8,11 +8,12 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-searchbar placeholder="サークル名・スペース名・説明文から検索できます" (ionInput)="getItems($event)"></ion-searchbar>
   <div *ngIf="!circles.length" class="loading">
     <ion-icon class="sync-icon" name="sync"></ion-icon>
   </div>
 
+  <div class="wrapper">
   <ion-card *ngFor="let circle of visibleCircles">
     <div class="card-head">
       <img src={{circle.circleCutImage.url}} *ngIf="circle.circleCutImage.url" />
@@ -34,14 +35,17 @@
         {{circle.penName}}
       </p>
     </ion-card-content>
-    <ion-row>
-      <ion-col>
-        <button ion-button icon-left clear small (click)="onClickBookmark(circle.id)">
-          <ion-icon name="star"></ion-icon>
-          <div>ブックマーク</div>
-        </button>
-      </ion-col>
-    </ion-row>
+    <div class="button-area">
+      <button ion-button icon-left outline (click)="onClickBookmark(circle.id)" *ngIf="!(bookmarks.indexOf(circle.id)+1)">
+        <ion-icon name="star"></ion-icon>
+        <div>&nbsp;ブックマーク&nbsp;</div>
+      </button>
+      <button ion-button icon-left (click)="onClickBookmark(circle.id)" *ngIf="bookmarks.indexOf(circle.id)+1">
+        <ion-icon name="star"></ion-icon>
+        <div>ブックマーク済</div>
+      </button>
+    </div>
   </ion-card>
+  </div>
 
 </ion-content>

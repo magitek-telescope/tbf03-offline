@@ -14,3 +14,15 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.menu-inner {
+  .scroll-content {
+    background: #F4F4F4;
+
+    ion-item-group {
+      .item:last-child{
+        border-bottom: solid 1px #DEDEDE;
+      }
+    }
+  }
+}

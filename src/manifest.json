@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "技術書展3 オフラインビューアー",
+  "short_name": "TBF03 Offline",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{

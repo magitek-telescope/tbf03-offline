@@ -17,12 +17,14 @@ export class HomePage {
 
   public circles: Circle[] = [];
   public visibleCircles: Circle[] = [];
+  public bookmarks: string[] = [];
   private baseURL: string = 'https://us-central1-tbf03-offline.cloudfunctions.net/scraper'
 
   constructor(
     public navCtrl: NavController,
     private http: HttpClient
   ) {
+    this.bookmarks = getBookmark();
     if(navigator.onLine) {
       this.http.get(this.baseURL).subscribe((json: any) => {
         this.circles = JSON.parse(json).list.map((circle) => {
@@ -55,11 +57,12 @@ export class HomePage {
   }
 
   onClickBookmark (id: string) {
-    if (getBookmark().find((bid: string) => bid == id)) {
+    if (this.bookmarks.indexOf(id)+1) {
       removeBookmark(id)
     } else {
       addBookmark(id)
     }
+    this.bookmarks = getBookmark()
   }
 
 }

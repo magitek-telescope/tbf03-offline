@@ -1,16 +1,28 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <ion-title>技術書典3 Offline Viewer</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
-    <ion-list>
+
+    <ion-item-group>
+      <ion-item-divider color="light">Menu</ion-item-divider>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
-    </ion-list>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="light">Credit</ion-item-divider>
+      <a href="https://github.com/potato4d/tbf03-offline" target="_blank" rel="noopener" ion-item>
+        GitHub Source Code
+      </a>
+      <a href="https://twitter.com/potato4d" target="_blank" ion-item>
+        Created by <a href="https://twitter.com/potato4d" target="_blank" rel="noopener">@potato4d</a>
+      </a>
+    </ion-item-group>
   </ion-content>
 
 </ion-menu>
