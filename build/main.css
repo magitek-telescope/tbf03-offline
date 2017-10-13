@@ -25512,10 +25512,34 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-top));
 }
 
+.menu-inner .scroll-content {
+  background: #F4F4F4;
+}
+
+.menu-inner .scroll-content ion-item-group .item:last-child {
+  border-bottom: solid 1px #DEDEDE;
+}
+
 page-home .card-head {
   width: 50vw;
   height: 50vw;
   margin: 2rem auto;
+}
+
+page-home .button-area {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
 page-home .card-head img {
@@ -25599,10 +25623,57 @@ page-home .sync-icon {
   }
 }
 
+@media (min-width: 640px) {
+  page-home .scroll-content {
+    background: #f0f0f0;
+  }
+  page-home .wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  page-home .wrapper .card-md {
+    width: 360px;
+    margin: 20px 10px 30px;
+  }
+  page-home .wrapper .card-md .card-head {
+    width: 360px;
+    height: 360px;
+    margin: 2rem auto;
+  }
+}
+
 page-list .card-head {
   width: 50vw;
   height: 50vw;
   margin: 2rem auto;
+}
+
+page-list .button-area {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
 page-list .card-head img {
@@ -25668,5 +25739,36 @@ page-list .sync-icon {
   100% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
+  }
+}
+
+@media (min-width: 640px) {
+  page-list .scroll-content {
+    background: #f0f0f0;
+  }
+  page-list .wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  page-list .wrapper .card-md {
+    width: 360px;
+    margin: 20px 10px 30px;
+  }
+  page-list .wrapper .card-md .card-head {
+    width: 360px;
+    height: 360px;
+    margin: 2rem auto;
   }
 }
