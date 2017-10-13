@@ -1,4 +1,8 @@
 page-home {
+  .scroll-content {
+    background: #f0f0f0;
+  }
+
   .card-head {
     width: 50vw;
     height: 50vw;
@@ -49,10 +53,6 @@ page-home {
   }
 
   @media (min-width: 640px) {
-    .scroll-content {
-      background: #f0f0f0;
-    }
-
     .wrapper {
       display: flex;
       align-items: stretch;
