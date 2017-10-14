@@ -1,26 +1,16 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+# TBF03 Offline Viewer
 
-## How to use this template
+技術書展3のサークル一覧をオフラインで閲覧可能かつ気になるサークルをブックマークできるビューアーです。  
+一度オンライン環境下で開いておくことにより、以降オフラインでサークル一覧及びブックマークが完全に動作するようになります。
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+Service Workerベースで動作しますので、PC, Mac, Android環境のみでオフラインキャッシュが有効となります。  
+同人頒布会会場は、基本的にネットワークの混雑が予想されるため、Androidユーザーのかたなどは是非ご利用ください。
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+## Stack
 
-### With the Ionic CLI:
+- Ionic 4.3
+  - Angular 4.4
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+## Special Thanks
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start mySideMenu sidemenu
-```
-
-Then, to run it, cd into `mySideMenu` and run:
-
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
-
-Substitute ios for android if not on a Mac.
-
+開発にあたっては適宜Ionicの構造について [@rblabo](https://twitter.com/rdlabo) さんに助けていただきました :pray:
