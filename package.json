@@ -1,8 +1,9 @@
 {
   "name": "tbf03-offline",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "version": "0.1.0",
+  "author": "HANATANI Takuma(potato4d)",
+  "description": "TBF03 Offline Viewer",
+  "homepage": "https://github.com/potato4d/tbf03-offline",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -34,6 +35,5 @@
   "devDependencies": {
     "@ionic/app-scripts": "3.0.0",
     "typescript": "2.3.4"
-  },
-  "description": "An Ionic project"
+  }
 }
