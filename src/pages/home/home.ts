@@ -35,7 +35,6 @@ export class HomePage {
         });
         this.visibleCircles = this.circles;
         localStorage.setItem('circles', JSON.stringify(this.circles));
-        console.log(this.visibleCircles)
       });
     } else {
       this.circles = getLocalCircles();
