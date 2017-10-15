@@ -35,7 +35,6 @@ export class HomePage {
         });
         this.visibleCircles = this.circles;
         localStorage.setItem('circles', JSON.stringify(this.circles));
-        console.log(this.visibleCircles)
       });
     } else {
       this.circles = getLocalCircles();
@@ -44,14 +43,14 @@ export class HomePage {
   }
 
   getItems(ev: any) {
-    const target = ev.target.value;
+    const target: string = ev.target.value.toLowerCase();
     this.visibleCircles = this.circles.filter((circle: Circle) => {
       return (
-        circle.name.indexOf(target)+1 ||
-        circle.penName.indexOf(target)+1 ||
-        ('genreFreeFormat' in circle && circle.genreFreeFormat.indexOf(target)+1) ||
-        circle.nameRuby.indexOf(target)+1 ||
-        circle.spaces.join(', ').indexOf(target)+1
+        circle.name.toLowerCase().indexOf(target)+1 ||
+        circle.penName.toLowerCase().indexOf(target)+1 ||
+        ('genreFreeFormat' in circle && circle.genreFreeFormat.toLowerCase().indexOf(target)+1) ||
+        circle.nameRuby.toLowerCase().indexOf(target)+1 ||
+        circle.spaces.join(', ').toLowerCase().indexOf(target)+1
       );
     })
   }

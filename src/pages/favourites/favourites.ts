@@ -6,10 +6,10 @@ import { getBookmark } from '../../models/bookmarks';
 import { getLocalCircles } from '../../models/circle';
 
 @Component({
-  selector: 'page-list',
-  templateUrl: 'list.html'
+  selector: 'page-favourites',
+  templateUrl: 'favourites.html'
 })
-export class ListPage {
+export class FavouritesPage {
 
   public circles: Circle[] = [];
   public visibleCircles: Circle[] = [];
