@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { Circle } from '../../models/circle';
+import { Circle, searchCircles } from '../../models/circle';
 import { getBookmark } from '../../models/bookmarks';
 import { getLocalCircles } from '../../models/circle';
 
@@ -30,15 +30,7 @@ export class FavouritesPage {
 
   getItems(ev: any) {
     const target = ev.target.value;
-    this.visibleCircles = this.circles.filter((circle: Circle) => {
-      return (
-        circle.name.indexOf(target)+1 ||
-        circle.penName.indexOf(target)+1 ||
-        ('genreFreeFormat' in circle && circle.genreFreeFormat.indexOf(target)+1) ||
-        circle.nameRuby.indexOf(target)+1 ||
-        circle.spaces.join(', ').indexOf(target)+1
-      );
-    })
+    this.visibleCircles = searchCircles(target, this.circles);
   }
 
 }

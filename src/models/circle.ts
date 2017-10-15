@@ -22,3 +22,17 @@ export function getLocalCircles(): Circle[] {
   const bookmarks = (json || []) as Circle[];
   return bookmarks
 }
+
+export function searchCircles(target: string, circles: Circle[]): Circle[] {
+  target = target.toLowerCase();
+
+  return circles.filter((circle: Circle) => {
+    return (
+      circle.name.indexOf(target)+1 ||
+      circle.penName.indexOf(target)+1 ||
+      ('genreFreeFormat' in circle && circle.genreFreeFormat.indexOf(target)+1) ||
+      circle.nameRuby.indexOf(target)+1 ||
+      circle.spaces.join(', ').indexOf(target)+1
+    );
+  })
+}

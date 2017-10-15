@@ -4,7 +4,7 @@ import { NavController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Circle } from '../../models/circle';
+import { Circle, searchCircles } from '../../models/circle';
 import { getBookmark, addBookmark, removeBookmark } from '../../models/bookmarks';
 import { getLocalCircles } from '../../models/circle';
 
@@ -44,15 +44,7 @@ export class HomePage {
 
   getItems(ev: any) {
     const target: string = ev.target.value.toLowerCase();
-    this.visibleCircles = this.circles.filter((circle: Circle) => {
-      return (
-        circle.name.toLowerCase().indexOf(target)+1 ||
-        circle.penName.toLowerCase().indexOf(target)+1 ||
-        ('genreFreeFormat' in circle && circle.genreFreeFormat.toLowerCase().indexOf(target)+1) ||
-        circle.nameRuby.toLowerCase().indexOf(target)+1 ||
-        circle.spaces.join(', ').toLowerCase().indexOf(target)+1
-      );
-    })
+    this.visibleCircles = searchCircles(target, this.circles);
   }
 
   onClickBookmark (id: string) {
