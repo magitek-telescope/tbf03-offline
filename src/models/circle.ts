@@ -28,11 +28,11 @@ export function searchCircles(target: string, circles: Circle[]): Circle[] {
 
   return circles.filter((circle: Circle) => {
     return (
-      circle.name.indexOf(target)+1 ||
-      circle.penName.indexOf(target)+1 ||
-      ('genreFreeFormat' in circle && circle.genreFreeFormat.indexOf(target)+1) ||
-      circle.nameRuby.indexOf(target)+1 ||
-      circle.spaces.join(', ').indexOf(target)+1
+      circle.name.toLowerCase().indexOf(target)+1 ||
+      circle.penName.toLowerCase().indexOf(target)+1 ||
+      ('genreFreeFormat' in circle && circle.genreFreeFormat.toLowerCase().indexOf(target)+1) ||
+      circle.nameRuby.toLowerCase().indexOf(target)+1 ||
+      circle.spaces.join(', ').toLowerCase().indexOf(target)+1
     );
   })
 }
