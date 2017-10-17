@@ -14,27 +14,6 @@
   </div>
 
   <div class="wrapper">
-  <ion-card *ngFor="let circle of visibleCircles">
-    <div class="card-head">
-      <img src={{circle.circleCutImage.url}} *ngIf="circle.circleCutImage.url" />
-      <div *ngIf="!circle.circleCutImage.url" class="noimage">
-        noimage
-      </div>
-    </div>
-    <ion-card-content>
-      <ion-card-title>
-        {{circle.name}}:<br>
-      </ion-card-title>
-      <p style="text-align: center">
-        {{circle.spaces.join(', ')}}
-      </p>
-      <p>
-        {{circle.genreFreeFormat || '説明文なし'}}
-      </p>
-      <p style="text-align: right">
-        {{circle.penName}}
-      </p>
-    </ion-card-content>
-  </ion-card>
+    <circle-card *ngFor="let circle of visibleCircles" [info]="circle"></circle-card>
   </div>
 </ion-content>
