@@ -9,6 +9,8 @@ import { FavouritesPage } from '../pages/favourites/favourites';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { ComponentsModule } from '../components/components.module';
+
 import { HttpClientModule } from '@angular/common/http';
 import { CloudfunctionsProvider } from '../providers/cloudfunctions/cloudfunctions';
 import { BookmarkProvider } from '../providers/bookmark/bookmark';
@@ -23,7 +25,8 @@ import { CircleProvider } from '../providers/circle/circle';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

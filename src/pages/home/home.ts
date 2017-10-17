@@ -27,7 +27,6 @@ export class HomePage {
   ){}
 
   ionViewDidLoad() {
-      this.bookmarks = this.bookmark.getBookmark();
       if(navigator.onLine) {
           this.cf.getScraper()
               .subscribe((json: any) => {
@@ -45,14 +44,4 @@ export class HomePage {
     const target: string = ev.target.value.toLowerCase();
     this.visibleCircles = this.circle.searchCircles(target, this.circles);
   }
-
-  onClickBookmark (id: string) {
-    if (this.bookmarks.indexOf(id)+1) {
-        this.bookmark.removeBookmark(id)
-    } else {
-        this.bookmark.addBookmark(id)
-    }
-    this.bookmarks = this.bookmark.getBookmark()
-  }
-
 }

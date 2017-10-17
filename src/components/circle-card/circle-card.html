@@ -1,0 +1,22 @@
+<ion-card>
+  <div class="card-head">
+    <img src={{info.circleCutImage.url}} *ngIf="info.circleCutImage.url" />
+    <div *ngIf="!info.circleCutImage.url" class="noimage">noimage</div>
+  </div>
+  <ion-card-content>
+    <ion-card-title>{{info.name}}:</ion-card-title>
+    <p style="text-align: center">{{info.spaces.join(', ')}}</p>
+    <p>{{info.genreFreeFormat || '説明文なし'}}</p>
+    <p style="text-align: right">{{info.penName}}</p>
+  </ion-card-content>
+  <div class="button-area">
+    <button ion-button icon-left outline block (click)="onClickBookmark(info.id)" *ngIf="!(bookmarks.indexOf(info.id)+1)">
+      <ion-icon name="star"></ion-icon>
+      <div>&nbsp;ブックマーク&nbsp;</div>
+    </button>
+    <button ion-button icon-left block (click)="onClickBookmark(info.id)" *ngIf="bookmarks.indexOf(info.id)+1">
+      <ion-icon name="star"></ion-icon>
+      <div>ブックマーク済</div>
+    </button>
+  </div>
+</ion-card>

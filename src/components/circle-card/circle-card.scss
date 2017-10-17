@@ -1,0 +1,55 @@
+circle-card {
+
+  ion-card {
+    position:relative;
+    padding-bottom: 70px;
+
+    @media (min-width: 640px) {
+      height: 90%;
+    }
+
+    .button-area{
+      position: absolute;
+      bottom:  0;
+      padding: 2rem;
+      width: 100%;
+    }
+
+    .card-head {
+      width: 50vw;
+      height: 50vw;
+      margin: 2rem auto;
+    }
+
+
+    .card-head img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .card-head .noimage{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 1.6px;
+      color: #333;
+      font-size: 2rem;
+    }
+
+  }
+
+  @media (min-width: 640px) {
+    ion-card.card-md{
+        width: 360px;
+        margin: 20px 10px 30px;
+
+        .card-head {
+          width: 360px;
+          height: 360px;
+          margin: 2rem auto;
+        }
+      }
+  }
+}
