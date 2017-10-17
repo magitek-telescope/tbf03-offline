@@ -19,11 +19,12 @@ export class HomePage {
   public circles: Circle[] = [];
   public visibleCircles: Circle[] = [];
   public bookmarks: string[] = [];
+  public page:number = 0;
+  public per :number = 9;
 
   constructor(
     public navCtrl: NavController,
     public cf: CloudfunctionsProvider,
-    public bookmark: BookmarkProvider,
     public circle: CircleProvider
   ){}
 
@@ -32,7 +33,8 @@ export class HomePage {
           this.cf.getScraper()
               .subscribe((json: any) => {
               this.circles = json;
-              this.visibleCircles = this.circles;
+              this.visibleCircles = this.circles.slice(this.page, this.per * 2);
+              this.page++;
               localStorage.setItem('circles', JSON.stringify(this.circles));
           });
       } else {
@@ -44,5 +46,12 @@ export class HomePage {
   getItems(ev: any) {
     const target: string = ev.target.value.toLowerCase();
     this.visibleCircles = this.circle.searchCircles(target, this.circles);
+  }
+
+  doInfinite(infiniteScroll) {
+      this.visibleCircles = this.visibleCircles.concat(this.circles.slice(this.page * this.per, this.page * this.per + this.per));
+      this.page++;
+      console.log([this.page * this.per, this.page * this.per + this.per]);
+      infiniteScroll.complete();
   }
 }
