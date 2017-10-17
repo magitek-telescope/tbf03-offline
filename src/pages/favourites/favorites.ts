@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 
 import { Circle } from '../../interfaces';
 import { CloudfunctionsProvider, BookmarkProvider, CircleProvider } from '../../providers';
 
+@IonicPage()
 @Component({
   selector: 'page-favourites',
-  templateUrl: 'favourites.html',
+  templateUrl: 'favorites.html',
   providers: [
       CloudfunctionsProvider,
       BookmarkProvider,
       CircleProvider
   ]
 })
-export class FavouritesPage {
+export class FavoritesPage {
 
   public circles: Circle[] = [];
   public visibleCircles: Circle[] = [];
