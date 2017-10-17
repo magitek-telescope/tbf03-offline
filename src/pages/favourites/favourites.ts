@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { Circle, searchCircles } from '../../models/circle';
-import { getBookmark } from '../../models/bookmarks';
-import { getLocalCircles } from '../../models/circle';
+import { Circle } from '../../interfaces';
+import { CloudfunctionsProvider, BookmarkProvider, CircleProvider } from '../../providers';
 
 @Component({
   selector: 'page-favourites',
-  templateUrl: 'favourites.html'
+  templateUrl: 'favourites.html',
+  providers: [
+      CloudfunctionsProvider,
+      BookmarkProvider,
+      CircleProvider
+  ]
 })
 export class FavouritesPage {
 
@@ -15,13 +19,18 @@ export class FavouritesPage {
   public visibleCircles: Circle[] = [];
 
   constructor(
-    public navCtrl: NavController
-  ) {
-    let circles: Circle[] = getLocalCircles();
-    const bookmarks = getBookmark()
+    public navCtrl: NavController,
+    public cf: CloudfunctionsProvider,
+    public bookmark: BookmarkProvider,
+    public circle: CircleProvider
+  ) {}
+
+  ionViewDidLoad() {
+    let circles: Circle[] = this.circle.getLocalCircles();
+    const bookmarks = this.bookmark.getBookmark();
 
     circles = circles.filter((circle: Circle) => {
-      return (bookmarks.indexOf(circle.id)+1)
+        return (bookmarks.indexOf(circle.id)+1)
     });
 
     this.circles = circles;
@@ -30,7 +39,7 @@ export class FavouritesPage {
 
   getItems(ev: any) {
     const target = ev.target.value;
-    this.visibleCircles = searchCircles(target, this.circles);
+    this.visibleCircles = this.circle.searchCircles(target, this.circles);
   }
 
 }

@@ -5,10 +5,10 @@
     </button>
     <ion-title>全サークル一覧</ion-title>
   </ion-navbar>
+  <ion-searchbar placeholder="サークル名・スペース名・説明文から検索できます" (ionInput)="getItems($event)"></ion-searchbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar placeholder="サークル名・スペース名・説明文から検索できます" (ionInput)="getItems($event)"></ion-searchbar>
   <div *ngIf="!circles.length" class="loading">
     <ion-icon class="sync-icon" name="sync"></ion-icon>
   </div>
@@ -22,9 +22,7 @@
       </div>
     </div>
     <ion-card-content>
-      <ion-card-title>
-        {{circle.name}}:<br>
-      </ion-card-title>
+      <ion-card-title>{{circle.name}}:</ion-card-title>
       <p style="text-align: center">
         {{circle.spaces.join(', ')}}
       </p>
@@ -36,11 +34,11 @@
       </p>
     </ion-card-content>
     <div class="button-area">
-      <button ion-button icon-left outline (click)="onClickBookmark(circle.id)" *ngIf="!(bookmarks.indexOf(circle.id)+1)">
+      <button ion-button icon-left outline block (click)="onClickBookmark(circle.id)" *ngIf="!(bookmarks.indexOf(circle.id)+1)">
         <ion-icon name="star"></ion-icon>
         <div>&nbsp;ブックマーク&nbsp;</div>
       </button>
-      <button ion-button icon-left (click)="onClickBookmark(circle.id)" *ngIf="bookmarks.indexOf(circle.id)+1">
+      <button ion-button icon-left block (click)="onClickBookmark(circle.id)" *ngIf="bookmarks.indexOf(circle.id)+1">
         <ion-icon name="star"></ion-icon>
         <div>ブックマーク済</div>
       </button>

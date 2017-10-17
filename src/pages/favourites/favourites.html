@@ -5,10 +5,10 @@
     </button>
     <ion-title>ブックマーク一覧</ion-title>
   </ion-navbar>
+  <ion-searchbar placeholder="サークル名・スペース名・説明文から検索できます" (ionInput)="getItems($event)"></ion-searchbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar placeholder="サークル名・スペース名・説明文から検索できます" (ionInput)="getItems($event)"></ion-searchbar>
   <div *ngIf="!circles.length" class="loading">
     ブックマークがありません。
   </div>

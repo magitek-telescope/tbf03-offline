@@ -10,6 +10,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HttpClientModule } from '@angular/common/http';
+import { CloudfunctionsProvider } from '../providers/cloudfunctions/cloudfunctions';
+import { BookmarkProvider } from '../providers/bookmark/bookmark';
+import { CircleProvider } from '../providers/circle/circle';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CloudfunctionsProvider,
+    BookmarkProvider,
+    CircleProvider
   ]
 })
 export class AppModule {}

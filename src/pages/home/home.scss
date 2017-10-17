@@ -3,18 +3,24 @@ page-home {
     background: #f0f0f0;
   }
 
+  ion-card {
+    position:relative;
+    padding-bottom: 70px;
+
+    .button-area{
+      position: absolute;
+      bottom:  0;
+      padding: 2rem;
+      width: 100%;
+    }
+  }
+
   .card-head {
     width: 50vw;
     height: 50vw;
     margin: 2rem auto;
   }
 
-  .button-area{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-  }
 
   .card-head img {
     width: 100%;

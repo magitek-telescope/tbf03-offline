@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { CloudfunctionsProvider } from '../../providers';
-import { Circle, searchCircles } from '../../models/circle';
-import { getBookmark, addBookmark, removeBookmark } from '../../models/bookmarks';
-import { getLocalCircles } from '../../models/circle';
+import { Circle } from '../../interfaces';
+import { CloudfunctionsProvider, BookmarkProvider, CircleProvider } from '../../providers';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers: [CloudfunctionsProvider]
+  providers: [
+      CloudfunctionsProvider,
+      BookmarkProvider,
+      CircleProvider
+  ]
 })
 export class HomePage {
 
@@ -19,11 +21,13 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    public cf: CloudfunctionsProvider
+    public cf: CloudfunctionsProvider,
+    public bookmark: BookmarkProvider,
+    public circle: CircleProvider
   ){}
 
   ionViewDidLoad() {
-      this.bookmarks = getBookmark();
+      this.bookmarks = this.bookmark.getBookmark();
       if(navigator.onLine) {
           this.cf.getScraper()
               .subscribe((json: any) => {
@@ -32,23 +36,23 @@ export class HomePage {
               localStorage.setItem('circles', JSON.stringify(this.circles));
           });
       } else {
-          this.circles = getLocalCircles();
+          this.circles = this.circle.getLocalCircles();
           this.visibleCircles = this.circles;
       }
   }
 
   getItems(ev: any) {
     const target: string = ev.target.value.toLowerCase();
-    this.visibleCircles = searchCircles(target, this.circles);
+    this.visibleCircles = this.circle.searchCircles(target, this.circles);
   }
 
   onClickBookmark (id: string) {
     if (this.bookmarks.indexOf(id)+1) {
-      removeBookmark(id)
+        this.bookmark.removeBookmark(id)
     } else {
-      addBookmark(id)
+        this.bookmark.addBookmark(id)
     }
-    this.bookmarks = getBookmark()
+    this.bookmarks = this.bookmark.getBookmark()
   }
 
 }
