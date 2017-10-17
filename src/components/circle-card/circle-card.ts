@@ -1,12 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Circle } from '../../interfaces';
-import { CloudfunctionsProvider, BookmarkProvider, CircleProvider } from '../../providers';
+import { BookmarkProvider, CircleProvider } from '../../providers';
 
 @Component({
   selector: 'circle-card',
   templateUrl: 'circle-card.html',
     providers: [
-        CloudfunctionsProvider,
         BookmarkProvider,
         CircleProvider
     ]
@@ -19,7 +18,6 @@ export class CircleCardComponent {
   @Input() info:Circle;
 
   constructor(
-      public cf: CloudfunctionsProvider,
       public bookmark: BookmarkProvider,
       public circle: CircleProvider
   ){}

@@ -5,9 +5,9 @@
   </div>
   <ion-card-content>
     <ion-card-title>{{info.name}}:</ion-card-title>
-    <p style="text-align: center">{{info.spaces.join(', ')}}</p>
-    <p>{{info.genreFreeFormat || '説明文なし'}}</p>
-    <p style="text-align: right">{{info.penName}}</p>
+    <span class="space-tag" *ngFor="let space of info.spaces">{{space}}</span>
+    <p style="margin-top:5px;">{{info.genreFreeFormat || '説明文なし'}}</p>
+    <p style="text-align: right;">{{info.penName}}</p>
   </ion-card-content>
   <div class="button-area">
     <button ion-button icon-left outline block (click)="onClickBookmark(info.id)" *ngIf="!(bookmarks.indexOf(info.id)+1)">

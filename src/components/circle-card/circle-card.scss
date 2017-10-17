@@ -2,10 +2,20 @@ circle-card {
 
   ion-card {
     position:relative;
-    padding-bottom: 70px;
+    padding-bottom: 100px;
 
     @media (min-width: 640px) {
       height: 90%;
+    }
+
+    ion-card-content {
+      margin: 0 5px;
+
+      span.space-tag {
+        background-color: #f0f0f0;
+        padding: 3px 4px;
+        margin: 0 3px 0 0;
+      }
     }
 
     .button-area{
@@ -14,28 +24,28 @@ circle-card {
       padding: 2rem;
       width: 100%;
     }
-
     .card-head {
       width: 50vw;
       height: 50vw;
       margin: 2rem auto;
-    }
 
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
 
-    .card-head img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    .card-head .noimage{
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      letter-spacing: 1.6px;
-      color: #333;
-      font-size: 2rem;
+      .noimage{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: 1.6px;
+        color: #333;
+        font-size: 2rem;
+      }
+
     }
 
   }
