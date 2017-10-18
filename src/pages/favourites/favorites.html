@@ -3,19 +3,17 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>全サークル一覧</ion-title>
+    <ion-title>ブックマーク一覧</ion-title>
   </ion-navbar>
   <ion-searchbar placeholder="サークル名・スペース名・説明文から検索できます" (ionInput)="getItems($event)"></ion-searchbar>
 </ion-header>
 
 <ion-content padding>
   <div *ngIf="!circles.length" class="loading">
-    <ion-icon class="sync-icon" name="sync"></ion-icon>
+    ブックマークがありません。
   </div>
+
   <div class="wrapper">
     <circle-card *ngFor="let circle of visibleCircles" [info]="circle"></circle-card>
   </div>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-    <ion-infinite-scroll-content></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
 </ion-content>
