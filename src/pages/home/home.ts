@@ -9,9 +9,9 @@ import { CloudfunctionsProvider, BookmarkProvider, CircleProvider } from '../../
   selector: 'page-home',
   templateUrl: 'home.html',
   providers: [
-      CloudfunctionsProvider,
-      BookmarkProvider,
-      CircleProvider
+    CloudfunctionsProvider,
+    BookmarkProvider,
+    CircleProvider
   ]
 })
 export class HomePage {
@@ -29,17 +29,24 @@ export class HomePage {
   ){}
 
   ionViewDidLoad() {
-      if(navigator.onLine) {
-          this.cf.getScraper()
-              .subscribe((json: any) => {
-              this.circles = json;
-              this.visibleCircles = this.circles;
-              localStorage.setItem('circles', JSON.stringify(this.circles));
-          });
-      } else {
-          this.circles = this.circle.getLocalCircles();
-          this.visibleCircles = this.circles;
-      }
+    let isFetched = false;
+    try {
+      isFetched = !!(+(localStorage.getItem('is_fetched')))
+    } catch (e) {
+
+    }
+
+    if(navigator.onLine && !isFetched) {
+      this.cf.getScraper()
+      .subscribe((json: any) => {
+        this.circles = json;
+        this.visibleCircles = this.circles;
+        localStorage.setItem('circles', JSON.stringify(this.circles));
+      });
+    } else {
+      this.circles = this.circle.getLocalCircles();
+      this.visibleCircles = this.circles;
+    }
   }
 
   getItems(ev: any) {

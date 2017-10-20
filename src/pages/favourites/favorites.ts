@@ -9,9 +9,9 @@ import { CloudfunctionsProvider, BookmarkProvider, CircleProvider } from '../../
   selector: 'page-favourites',
   templateUrl: 'favorites.html',
   providers: [
-      CloudfunctionsProvider,
-      BookmarkProvider,
-      CircleProvider
+    CloudfunctionsProvider,
+    BookmarkProvider,
+    CircleProvider
   ]
 })
 export class FavoritesPage {
