@@ -33,8 +33,7 @@ export class HomePage {
           this.cf.getScraper()
               .subscribe((json: any) => {
               this.circles = json;
-              this.visibleCircles = this.circles.slice(this.page, this.per * 2);
-              this.page++;
+              this.visibleCircles = this.circles;
               localStorage.setItem('circles', JSON.stringify(this.circles));
           });
       } else {
